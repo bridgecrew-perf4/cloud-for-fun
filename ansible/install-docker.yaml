@@ -1,0 +1,14 @@
+- name: install docker / pull nginx image and run it
+  hosts: centos-gcloud
+  tasks:
+    - name: install docker
+      command: 'sudo yum install docker -y'
+
+    - name: restart docker daemon
+      command: 'sudo systemctl restart docker'
+
+    - name: pull nginx image
+      command: 'sudo docker pull nginx:latest'
+
+    - name: run nginx docker image
+      command: 'sudo docker run -d nginx'
