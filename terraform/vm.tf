@@ -3,7 +3,7 @@ resource "random_id" "instance_id" {
  byte_length = 8
 }
 
-// A single Compute Engine instance
+// Small compute engine located in belgium
 resource "google_compute_instance" "default" {
  name         = "centos-vm-${random_id.instance_id.hex}"
  machine_type = "e2-micro"
@@ -14,9 +14,6 @@ resource "google_compute_instance" "default" {
      image = "centos-cloud/centos-7"
    }
  }
-
-// Make sure flask is installed on all new instances for later steps
-#  metadata_startup_script = "sudo yum update; sudo yum upgrade -y"
 
  network_interface {
    network = "default"
