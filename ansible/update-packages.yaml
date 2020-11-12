@@ -1,0 +1,7 @@
+- name: update and upgrade packages
+  hosts: centos-gcloud
+  tasks:
+    - name: update packages
+      yum:
+        name: '*'
+        state: latest
