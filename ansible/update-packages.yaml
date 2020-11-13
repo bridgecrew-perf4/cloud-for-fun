@@ -2,6 +2,8 @@
   hosts: centos-gcloud
   tasks:
     - name: update packages
+      become: yes
+      become_user: root
       yum:
         name: '*'
         state: latest
