@@ -9,7 +9,7 @@
         />
         <button onclick="Shorten()">Shorten your url !</button>
 
-        <p id="shortenedLink"></p>
+        <a id="shortenedLink"></a>
 
         <script>
             function Shorten() {
@@ -19,7 +19,9 @@
                 })
                     .then((response) => response.json())
                     .then((data) => {
-                        document.getElementById('shortenedLink').innerHTML = data.url;
+                        const shortenedUrl = data.url;
+                        document.getElementById('shortenedLink').innerHTML = shortenedUrl;
+                        document.getElementById('shortenedLink').href = shortenedUrl;
                     });
             }
         </script>
