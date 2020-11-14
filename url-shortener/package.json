@@ -1,20 +1,32 @@
 {
-  "name": "url-shortener",
-  "version": "1.0.0",
-  "description": "Nodejs api that shorten your urls!",
-  "main": "index.js",
-  "repository": "https://github.com/adriamanu/cloud-for-fun/url-shortener",
-  "author": "adriamanu",
-  "license": "MIT",
-  "scripts": {
-    "dev": "npx nodemon app.js",
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "redis": "^3.0.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.6"
-  }
+    "name": "url-shortener",
+    "version": "1.0.0",
+    "description": "Nodejs api that shorten your urls!",
+    "main": "index.js",
+    "repository": "https://github.com/adriamanu/cloud-for-fun/url-shortener",
+    "author": "adriamanu",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "dev": "npx nodemon app.js",
+        "start": "node app.js",
+        "prettier": "prettier \"**/*.{js,jsx,css,json}\"",
+        "lint": "npx eslint"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "pretty-quick": "^3.1.0",
+        "redis": "^3.0.2"
+    },
+    "devDependencies": {
+        "eslint": "^7.13.0",
+        "husky": "^4.3.0",
+        "nodemon": "^2.0.6",
+        "prettier": "^2.1.2"
+    }
 }
