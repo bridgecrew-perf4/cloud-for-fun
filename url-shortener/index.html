@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        Url you would like to shorten:
+        <input
+            type="text"
+            id="urlToShorten"
+            value="https://a-really-long-url?with-some=parameters"
+        />
+        <button onclick="Shorten()">Shorten your url !</button>
+
+        <p id="shortenedLink"></p>
+
+        <script>
+            function Shorten() {
+                const url = document.getElementById('urlToShorten').value;
+                fetch(`http://localhost:3000/shorten?url=${url}`, {
+                    method: 'POST',
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        document.getElementById('shortenedLink').innerHTML = data.url;
+                    });
+            }
+        </script>
+    </body>
+</html>
