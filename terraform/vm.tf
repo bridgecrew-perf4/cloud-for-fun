@@ -1,13 +1,15 @@
 // Terraform plugin for creating random ids
-resource "random_id" "instance_id" {
- byte_length = 8
+resource "google_compute_address" "static" {
+  count = "${var.instance_count}" 
+  name = format("ipv4-address-%s", count.index)
 }
 
 // Small compute engine located in belgium
 resource "google_compute_instance" "default" {
- name         = "centos-vm-${random_id.instance_id.hex}"
- machine_type = "e2-micro"
- zone         = "europe-west1-b"
+ count = "${var.instance_count}"
+ name         = format("centos-vm-%s", count.index)
+ machine_type = "${var.instance_type}"
+ zone         = "${var.zone}"
 
  boot_disk {
    initialize_params {
@@ -19,7 +21,7 @@ resource "google_compute_instance" "default" {
    network = "default"
 
    access_config {
-     // Include this section to give the VM an external ip address
+      nat_ip = "${google_compute_address.static[count.index].address}"
    }
  }
 }
