@@ -1,0 +1,7 @@
+- name: install redis and configure it
+  hosts: centos-gcloud
+  tasks:
+    - name: install redis package
+      yum:
+        name: redis
+        state: latest
