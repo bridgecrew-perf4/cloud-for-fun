@@ -1,7 +1,7 @@
 [centos-gcloud]
-35.240.119.195
-34.78.59.246
-34.76.152.33
+34.76.46.108
+35.205.125.255
+34.78.206.22
 
 [centos-gcloud:vars]
 ansible_ssh_user=manu
