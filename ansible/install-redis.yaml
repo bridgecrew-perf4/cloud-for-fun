@@ -1,7 +1,35 @@
 - name: install redis and configure it
-  hosts: centos-gcloud
+  hosts: centos-gcloud-redis
   tasks:
-    - name: install redis package
-      yum:
-        name: redis
-        state: latest
+    - name: install remi repository
+      command: "sudo yum install -y epel-release yum-utils http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
+
+    - name: allow to download modules from this remi repository
+      command: "sudo yum-config-manager --enable remi"
+
+    - name: allow to download modules from this remi repository
+      command: "sudo yum-config-manager --enable remi"
+
+    - name: download redis package
+      command: "sudo yum install -y redis"
+
+    - name: copy redis configuration file
+      become: yes
+      become_user: root
+      copy:
+        src: "./redis.conf"
+        dest: "/etc/redis.conf"
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: start redis service
+      command: "sudo systemctl start redis"
+
+    - name: enable redis service to start on boot
+      command: "sudo systemctl enable redis"
+
+    # for idempotency if redis has been started and installed previously
+    # we restart the service because config could have change
+    - name: restart redis service
+      command: "sudo systemctl restart redis"

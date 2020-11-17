@@ -1,9 +1,10 @@
 [centos-gcloud]
 34.76.46.108
 35.205.125.255
+[centos-gcloud-redis]
 34.78.206.22
 
-[centos-gcloud:vars]
+[all:vars]
 ansible_ssh_user=manu
 ansible_ssh_private_key_file=/home/manu/.ssh/ir_rsa
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
