@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+    </head>
     <body>
-        Url you would like to shorten:
+        <div class="customDiv"><h1>url-shortener</h1></div>
         <input
             type="text"
             id="urlToShorten"
-            value="https://a-really-long-url?with-some=parameters"
+            value="https://subdomain.a-really-long-domain.ext?with-some=parameters"
         />
         <button onclick="Shorten()">Shorten your url !</button>
-
-        <a id="shortenedLink"></a>
 
         <script>
             function Shorten() {
@@ -20,8 +21,7 @@
                     .then((response) => response.json())
                     .then((data) => {
                         const shortenedUrl = data.url;
-                        document.getElementById('shortenedLink').innerHTML = shortenedUrl;
-                        document.getElementById('shortenedLink').href = shortenedUrl;
+                        document.getElementById('urlToShorten').value = shortenedUrl;
                     });
             }
         </script>
