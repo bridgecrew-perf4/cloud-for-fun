@@ -9,6 +9,7 @@ input {
   top: 40%;
   font-size: 30px;
   color: #75aaf8;
+  font-family: system-ui;
   padding: 0 20px;
 }
 
@@ -23,5 +24,16 @@ button {
   top: 48%;
   font-size: 30px;
   color: #75aaf8;
+  font-family: system-ui;
   padding: 0 20px;
+}
+
+.customDiv {
+  position: fixed;
+  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+  font-family: system-ui;
+  left: 31.5%;
+  top: 14.5%;
+  font-size: 60px;
+  color: #000000;
 }
