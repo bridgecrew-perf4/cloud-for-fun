@@ -13,6 +13,7 @@
         "pm2:logs": "./node_modules/.bin/pm2 logs",
         "pm2:help": "./node_modules/.bin/pm2 --help",
         "pm2:monit": "./node_modules/.bin/pm2 monit",
+        "pm2:restart": "./node_modules/.bin/pm2 restart app.js",
         "start": "node app.js",
         "prettier": "prettier \"**/*.{js,jsx,css,json}\"",
         "lint": "npx eslint"
