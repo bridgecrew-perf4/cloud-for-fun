@@ -1,5 +1,4 @@
 'use strict';
-import redis from 'redis';
 import cors from 'cors';
 import express from 'express';
 import swaggerJSDocs from 'swagger-jsdoc';
@@ -7,7 +6,6 @@ import swaggerUI from 'swagger-ui-express';
 import { redirectHandler, shortenHandler } from './handlers.js';
 
 const app = express();
-const redisClient = redis.createClient();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
@@ -67,9 +65,7 @@ app.get('/', (req, res) => {
  *                type: string
  *            required: true
  */
-app.get('/:id', (req, res) => {
-    redirectHandler(req, res, redisClient);
-});
+app.get('/:id', redirectHandler);
 
 /**
  * @swagger
@@ -93,9 +89,7 @@ app.get('/:id', (req, res) => {
  *                               type: string
  *                               example: 'http://localhost:3000/pvqqed'
  */
-app.post('/shorten', (req, res) => {
-    shortenHandler(req, res, redisClient);
-});
+app.post('/shorten', shortenHandler);
 
 // Keep it as the last route
 app.get('/*', (req, res) => {
