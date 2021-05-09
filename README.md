@@ -1,2 +1,2 @@
 # cloud-for-fun
-Having fun on the cloud with automation / Ansible and Terraform !
+Having fun on google cloud with Ansible and Terraform !
